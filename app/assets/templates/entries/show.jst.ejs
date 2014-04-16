@@ -1,0 +1,26 @@
+<h3><%= entry.get("title") %></h3>
+
+<ul>
+  <li>
+    <%= entry.description %>
+  </li>
+
+
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+    t.string   "guid",         null: false
+    t.string   "link",         null: false
+    t.string   "title",        null: false
+    t.datetime "published_at", null: false
+    t.integer  "feed_id",      null: false
+    t.text     "json",         null: false

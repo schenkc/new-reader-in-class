@@ -1,13 +1,12 @@
-NR.Views.FeedShowView = Backbone.View.extend({
+NR.Views.FeedEntryShow = Backbone.View.extend({
 
   template: JST['feeds/show'],
-
 
   render: function () {
 
     this.$el.html("");
     var renderedContent = this.template({
-      // feed: this.model
+      feedEntries: this.collection
     });
 
     this.$el.html(renderedContent);
