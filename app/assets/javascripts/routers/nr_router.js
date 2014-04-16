@@ -5,20 +5,15 @@ NR.Routers.NRRouter = Backbone.Router.extend({
   },
 
   initialize: function (rootEl) {
-    this.feeds = new NR.Collections.Feeds();
+    this.feeds = new NR.Collections.Feeds(jsonParsedData);
     this.rootEl = rootEl;
   },
 
   feedIndex: function () {
-    var view = this;
-    this.feeds.fetch({
-      success: function () {
-        var indexView = new NR.Views.FeedIndexView({
-          collection: view.feeds
-        });
-        $(view.rootEl).html(indexView.render().$el);
-      }
-    })
+    var indexView = new NR.Views.FeedIndexView({
+      collection: this.feeds
+    });
+    $(this.rootEl).html(indexView.render().$el);
   },
 
   feedShow: function (id) {

@@ -1,4 +1,13 @@
 <h1>Hello World</h1>
 <div id='content'></div>
 
-<script></script>
+<script type="application/json" id="bootstrapped-data">
+  <%= @json_feeds.to_json.html_safe %>
+</script>
+
+<script>
+  var json = $("#bootstrapped-data").html();
+  var jsonParsedData = JSON.parse(json);
+</script>
+
+
