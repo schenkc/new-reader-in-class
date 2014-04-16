@@ -28,7 +28,8 @@ NR.Routers.NRRouter = Backbone.Router.extend({
     feedEntries.fetch({
       success: function () {
         var showView = new NR.Views.FeedEntryShow({
-          collection: feedEntries
+          collection: feedEntries,
+          model: feed
         });
 
         $(view.rootEl).html(showView.render().$el);
