@@ -9,9 +9,10 @@ class Feed < ActiveRecord::Base
 
     begin
       feed_data = SimpleRSS.parse(open(url))
+
       feed = Feed.create!(title: feed_data.title, url: url)
       feed_data.entries.each do |entry_data|
-        Entry.create_from_json!(entry_data, feed)
+        Entry.create_from_json(entry_data, feed)
       end
     rescue SimpleRSSError
       return nil
@@ -28,7 +29,7 @@ class Feed < ActiveRecord::Base
       existing_entry_guids = Entry.pluck(:guid).sort
       feed_data.entries.each do |entry_data|
         unless existing_entry_guids.include?(entry_data.guid)
-          Entry.create_from_json!(entry_data, self)
+          Entry.create_from_json(entry_data, self)
         end
       end
 
